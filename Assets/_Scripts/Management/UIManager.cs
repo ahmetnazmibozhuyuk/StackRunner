@@ -19,14 +19,17 @@ namespace StackRunner.Managers
         public void GameWon()
         {
             _gameConditionText.SetText("Game Won");
-            gameConditionTextObject.SetActive(true);
+            if (gameConditionTextObject != null)
+                gameConditionTextObject.SetActive(true);
             retryButton.SetActive(true);
         }
         public void GameLost()
         {
             _gameConditionText.SetText("Game Lost");
+            if(gameConditionTextObject != null)
             gameConditionTextObject.SetActive(true);
-            retryButton.SetActive(true);
+            if (retryButton != null)
+                retryButton.SetActive(true);
         }
     }
 }

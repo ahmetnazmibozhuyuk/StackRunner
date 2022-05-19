@@ -16,6 +16,8 @@ namespace StackRunner.Interactable
 
         private float _upperCounter = 1;
 
+        private float _colorChange;
+
         private void Start()
         {
 
@@ -25,11 +27,15 @@ namespace StackRunner.Interactable
         public void AddToGatherer(GameObject objectToAdd)
         {
             if (_collectedObject.Contains(objectToAdd)) return;
+            _colorChange += 0.05f;
+            objectToAdd.GetComponent<Renderer>().material.color = new Color(0,_colorChange,0);
+            
             _collectedObject.Add(objectToAdd);
         }
         public void RemoveLastMember()
         {
             _collectedObject.RemoveAt(_collectedObject.Count - 1);
+            _colorChange -= 0.05f;
         }
         private void FixedUpdate()
         {
@@ -67,6 +73,7 @@ namespace StackRunner.Interactable
                 if (_collectedObject[i] == null)
                 {
                     _collectedObject.RemoveAt(i);
+                    _colorChange -= 0.05f;
                     i--;
                     continue;
                 }
