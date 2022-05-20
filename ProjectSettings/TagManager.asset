@@ -8,6 +8,7 @@ TagManager:
   - Obstacle
   - Elevator
   - Goal
+  - Toll
   layers:
   - Default
   - TransparentFX

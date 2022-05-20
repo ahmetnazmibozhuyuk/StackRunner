@@ -12,26 +12,25 @@ namespace StackRunner.Interactable
 
         private List<GameObject> _collectedObject = new();
 
-        private int _counter;
-
         private float _upperCounter = 2.5f;
 
-        private float _redColor = 1f;
-        private float _grayColor = 1f;
-        private float _blueColor = 0.2f;
+        private float _redColor;
+        private float _greenColor;
+        private float _blueColor;
 
         private readonly float _colorChange = 0.05f;
         private void Start()
         {
-
+            ResetColor();
+            ResetCounter();
             AddToGatherer(gameObject);
         }
 
         public void AddToGatherer(GameObject objectToAdd)
         {
             if (_collectedObject.Contains(objectToAdd)) return;
-
-            objectToAdd.GetComponent<Renderer>().material.color = new Color(_redColor, _grayColor, _blueColor);
+            Debug.Log(_redColor + " " + _greenColor + " " + _blueColor);
+            objectToAdd.GetComponent<Renderer>().material.color = new Color(_redColor, _greenColor, _blueColor);
             AddObjectColor();
 
             _collectedObject.Add(objectToAdd);
@@ -42,9 +41,9 @@ namespace StackRunner.Interactable
             {
                 _redColor -= _colorChange;
             }
-            else if (_grayColor > 0)
+            else if (_greenColor > 0)
             {
-                _grayColor -= _colorChange;
+                _greenColor -= _colorChange;
             }
             else
             {
@@ -57,14 +56,24 @@ namespace StackRunner.Interactable
             {
                 _blueColor += _colorChange;
             }
-            else if (_grayColor < 1)
+            else if (_greenColor < 1)
             {
-                _grayColor += _colorChange;
+                _greenColor += _colorChange;
             }
             else
             {
                 _redColor += _colorChange;
             }
+        }
+        public void ResetColor()
+        {
+            _redColor = 1f;
+            _greenColor = 1f;
+            _blueColor = 0.2f;
+        }
+        public void ResetCounter()
+        {
+            _upperCounter = 2.5f;
         }
         public void RemoveLastMember()
         {
@@ -86,29 +95,11 @@ namespace StackRunner.Interactable
         }
         public void WinningScreen()
         {
-            _counter = _collectedObject.Count;
             GameManager.instance.Player.GetComponent<Rigidbody>().isKinematic = true;
-            //MoveBlock();
-            MoveBlocksFinal();
-
+            MoveBlocks();
         }
-        //private void MoveBlock()
-        //{
-        //    _counter--;
-        //    if (_counter <= 0)
-        //    {
-        //        _collectedObject[_counter].transform.DORotateQuaternion(Quaternion.identity, 1f);
-        //        _collectedObject[_counter].transform.DOMove(GameManager.instance.GoalPoint.transform.position + Vector3.up * _upperCounter, 1f);
-        //        GameManager.instance.ChangeState(GameState.GameWon);
-        //        return;
-        //    }
-        //    _collectedObject[_counter].transform.DORotateQuaternion(Quaternion.identity, 0.2f);
-        //    _collectedObject[_counter].transform.DOMove(GameManager.instance.GoalPoint.transform.position + Vector3.up * _upperCounter, 0.2f).OnComplete(MoveBlock);
-        //    _upperCounter += 2.7f;
-        //}
-        private void MoveBlocksFinal()
+        private void MoveBlocks()
         {
-            // Tüm loopu iki adımda yerleştir her biri önce mesafeyi gelsin sonra ileri gitsin. ilk taş ikinci hareketi özellikle yavaş yapsın.
             for (int i = _collectedObject.Count - 1; i >= 0; i--)
             {
                 if (i == 0)
@@ -121,7 +112,7 @@ namespace StackRunner.Interactable
                     return;
                 }
                 _collectedObject[i].transform.DORotateQuaternion(Quaternion.identity, 0.2f);
-                _collectedObject[i].transform.DOMove(GameManager.instance.GoalPoint.transform.position+Vector3.forward*0.8f + Vector3.up * _upperCounter, 0.2f + _upperCounter * 0.1f).SetEase(Ease.OutCubic);
+                _collectedObject[i].transform.DOMove(GameManager.instance.GoalPoint.transform.position + Vector3.forward * 0.8f + Vector3.up * _upperCounter, 0.2f + _upperCounter * 0.1f).SetEase(Ease.OutCubic);
                 _upperCounter += 2.357f;
             }
         }
@@ -137,11 +128,9 @@ namespace StackRunner.Interactable
                 if (_collectedObject[i] == null)
                 {
                     _collectedObject.RemoveAt(i);
-                    _grayColor -= 0.05f;
                     i--;
                     continue;
                 }
-                // todo x y ve z kısımlarını ayır, y değeri lerp ile değil doğrudan takip etsin.
                 _collectedObject[i].transform.SetPositionAndRotation(
 SetPosition(_collectedObject[i].transform.position, _collectedObject[i - 1].transform.position),
 Quaternion.Slerp(_collectedObject[i].transform.rotation, _collectedObject[i - 1].transform.rotation, objectPositionDelay));

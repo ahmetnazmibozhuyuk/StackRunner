@@ -16,6 +16,11 @@ namespace StackRunner.Interactable
                 PoolManager.instance.SpawnParticle(transform.position);
                 GameManager.instance.Gatherer.DestroyLastMember();
             }
+            if (other.gameObject.CompareTag("Toll"))
+            {
+
+                GameManager.instance.ChangeState(GameState.StopMovement);
+            }
             if (other.gameObject.CompareTag("Goal"))
             {
                 GameManager.instance.ChangeState(GameState.GameCheckingResults);

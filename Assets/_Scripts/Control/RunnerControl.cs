@@ -67,7 +67,7 @@ namespace StackRunner.Control
         private void AssignMovement()
         {
             _rigidbody.MovePosition(new Vector3(Mathf.Clamp(transform.position.x + maxControlSpeed * Time.deltaTime * _offsetOnXZ.x, -horizontalClampLimit, horizontalClampLimit),
-                transform.position.y-0.05f + maxControlSpeed * Time.deltaTime * _offsetOnXZ.y,
+                transform.position.y-0.1f + maxControlSpeed * Time.deltaTime * _offsetOnXZ.y,
                 maxForwardSpeed + transform.position.z));
 
 

@@ -60,17 +60,21 @@ namespace StackRunner.Managers
                 case GameState.GameLost:
                     GameLostState();
                     break;
+                case GameState.StopMovement:
+                    StopMovement();
+                    break;
                 default:
                     throw new System.ArgumentException("Invalid game state selection.");
             }
         }
         private void GameAwaitingStartState()
         {
-
+            _uiManager.GameAwaitingStart();
         }
         private void GameStartedState()
         {
-
+            _uiManager.GameStarted();
+            GoalPoint = GameObject.FindGameObjectWithTag("Goal");
         }
         private void GameCheckingResultsState()
         {
@@ -85,6 +89,10 @@ namespace StackRunner.Managers
         {
             _uiManager.GameLost();
         }
+        private void StopMovement()
+        {
+
+        }
     }
     public enum GameState
     {
@@ -94,5 +102,6 @@ namespace StackRunner.Managers
         GameCheckingResults = 3,
         GameWon = 4,
         GameLost = 5,
+        StopMovement = 6
     }
 }
