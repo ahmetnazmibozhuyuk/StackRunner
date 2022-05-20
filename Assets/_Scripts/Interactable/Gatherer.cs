@@ -132,17 +132,13 @@ namespace StackRunner.Interactable
                     continue;
                 }
                 _collectedObject[i].transform.SetPositionAndRotation(
-SetPosition(_collectedObject[i].transform.position, _collectedObject[i - 1].transform.position),
-Quaternion.Slerp(_collectedObject[i].transform.rotation, _collectedObject[i - 1].transform.rotation, objectPositionDelay));
+                    SetPosition(_collectedObject[i].transform.position, _collectedObject[i - 1].transform.position),
+                    Quaternion.Slerp(_collectedObject[i].transform.rotation, _collectedObject[i - 1].transform.rotation, objectPositionDelay));
             }
-
         }
         private Vector3 SetPosition(Vector3 currentPosition, Vector3 positionToMove)
         {
             return Vector3.Slerp(currentPosition + Vector3.forward * distanceBetweenObjects, positionToMove, objectPositionDelay);
         }
-
-
     }
-
 }
