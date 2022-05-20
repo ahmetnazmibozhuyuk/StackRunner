@@ -29,7 +29,6 @@ namespace StackRunner.Interactable
         public void AddToGatherer(GameObject objectToAdd)
         {
             if (_collectedObject.Contains(objectToAdd)) return;
-            Debug.Log(_redColor + " " + _greenColor + " " + _blueColor);
             objectToAdd.GetComponent<Renderer>().material.color = new Color(_redColor, _greenColor, _blueColor);
             AddObjectColor();
 
