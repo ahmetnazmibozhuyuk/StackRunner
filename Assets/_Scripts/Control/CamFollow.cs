@@ -13,7 +13,8 @@ namespace StackRunner.Control
             }
             if(GameManager.instance.CurrentState == GameState.GameCheckingResults)
             {
-                MoveUpwards();
+                //MoveUpwards();
+                FollowPlayerUpwards();
             }
         }
         private void FollowPlayer()
@@ -22,6 +23,15 @@ namespace StackRunner.Control
             transform.position = new Vector3(
                 transform.position.x,
                 transform.position.y,
+                GameManager.instance.Player.transform.position.z
+                );
+        }
+        private void FollowPlayerUpwards()
+        {
+            if (GameManager.instance.Player == null) return;
+            transform.position = new Vector3(
+                transform.position.x,
+                GameManager.instance.Player.transform.position.y,
                 GameManager.instance.Player.transform.position.z
                 );
         }

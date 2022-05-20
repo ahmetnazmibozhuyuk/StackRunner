@@ -25,8 +25,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 221631019187962699}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.00024, y: -0.0159, z: 0}
-  m_LocalScale: {x: 18.7, y: 1, z: 1}
+  m_LocalPosition: {x: -0.00024, y: -0.0156, z: 0}
+  m_LocalScale: {x: 18.7, y: 0.51457, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7822087515575221451}
@@ -70,8 +70,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1738485809989362490}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.00024, y: 0.01596, z: 0}
-  m_LocalScale: {x: 18.7, y: 1, z: 1}
+  m_LocalPosition: {x: -0.00024, y: 0.01557, z: 0}
+  m_LocalScale: {x: 18.7, y: 0.60907, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7822087515575221451}
@@ -115,8 +115,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3908867705260842281}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.01032, y: 0, z: 0}
-  m_LocalScale: {x: 0.35003, y: 25.175867, z: 1}
+  m_LocalPosition: {x: -0.00927, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 25.175867, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7822087515575221451}
@@ -160,8 +160,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6028719252553994547}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.01022, y: 0, z: 0}
-  m_LocalScale: {x: 0.35003, y: 25.175867, z: 1}
+  m_LocalPosition: {x: 0.00933, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 25.175867, z: 0.63864}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7822087515575221451}
@@ -208,7 +208,7 @@ Transform:
   m_GameObject: {fileID: 7477791269671970417}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.38, y: 0.6, z: 23.71}
-  m_LocalScale: {x: 95, y: 95, z: 50}
+  m_LocalScale: {x: 100, y: 100, z: 50}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7742841954742937640}
